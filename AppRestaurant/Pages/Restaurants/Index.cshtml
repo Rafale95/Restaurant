@@ -1,0 +1,65 @@
+﻿@page
+@model AppRestaurant.Pages.Restaurants.IndexModel
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Ajouter un nouveau restaurant</a>
+</p>
+
+
+<form asp-page="./Index" method="get">
+    <p> Tri localisations :
+        <select asp-for="restaurantLoc" asp-items="Model.restaurantLoc">
+            <option value="">All</option>
+        </select>
+        Find by product name: <input type="text" asp-for="searchString" value="@Model.currentFilter" />
+        <input type="submit" class="btn btn-primary" value="Search" />
+        <a asp-page="./Index">Back to full List</a>
+    </p>
+</form>
+<table class="table table-sucess table-striped table-responsive table-hover">
+<thead>
+    <tr>
+        <th>
+            <a asp-page". /Index" asp-route-sortOrder="@Model.restaurantNameSort">
+                @Html.DisplayNameFor(model => model.restaurants[0].RestaurantName)
+            </a>
+        </th>
+        <th>
+            <a asp-page". /Index" asp-route-sortOrder="@Model.RestaurantLocSort">
+                @Html.DisplayNameFor(model => model.restaurants[0].RestaurantLoc)
+            </a>
+        </th>
+    </tr>
+</thead>
+    <tbody>
+        @if (Model != null && Model.restaurants.Any()) //Si il y a des produits
+        {
+            @foreach (var item in Model.restaurants)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestaurantName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestaurantLoc)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.RestaurantID" type="button" class="btn btn-secondary">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.RestaurantID" type="button" class="btn btn-success">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.RestaurantID" type="button" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else  //Si pas de produits affiche un message
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    Restaurant introuvable
+                </td>
+            </tr>
+        }
+        </tbody>

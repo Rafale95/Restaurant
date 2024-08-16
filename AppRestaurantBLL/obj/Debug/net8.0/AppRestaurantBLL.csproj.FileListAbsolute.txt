@@ -1,0 +1,17 @@
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\bin\Debug\net8.0\AppRestaurantBLL.deps.json
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\bin\Debug\net8.0\AppRestaurantBLL.dll
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\bin\Debug\net8.0\AppRestaurantBLL.pdb
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\bin\Debug\net8.0\AppRestaurantBOL.dll
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\bin\Debug\net8.0\AppRestaurantDAL.dll
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\bin\Debug\net8.0\AppRestaurantBOL.pdb
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\bin\Debug\net8.0\AppRestaurantDAL.pdb
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\AppRestaurantBLL.csproj.AssemblyReference.cache
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\AppRestaurantBLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\AppRestaurantBLL.AssemblyInfoInputs.cache
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\AppRestaurantBLL.AssemblyInfo.cs
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\AppRestaurantBLL.csproj.CoreCompileInputs.cache
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\AppResta.CC37BB49.Up2Date
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\AppRestaurantBLL.dll
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\refint\AppRestaurantBLL.dll
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\AppRestaurantBLL.pdb
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantBLL\obj\Debug\net8.0\ref\AppRestaurantBLL.dll

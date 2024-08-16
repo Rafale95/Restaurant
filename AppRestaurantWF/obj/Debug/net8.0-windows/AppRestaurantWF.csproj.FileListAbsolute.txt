@@ -1,0 +1,16 @@
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\bin\Debug\net8.0-windows\AppRestaurantWF.exe
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\bin\Debug\net8.0-windows\AppRestaurantWF.deps.json
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\bin\Debug\net8.0-windows\AppRestaurantWF.runtimeconfig.json
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\bin\Debug\net8.0-windows\AppRestaurantWF.dll
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\bin\Debug\net8.0-windows\AppRestaurantWF.pdb
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.Form1.resources
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.csproj.GenerateResource.cache
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.AssemblyInfoInputs.cache
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.AssemblyInfo.cs
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.csproj.CoreCompileInputs.cache
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.dll
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\refint\AppRestaurantWF.dll
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.pdb
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\AppRestaurantWF.genruntimeconfig.cache
+C:\Users\utiN0L\Documents\Projet DB\ASP\AppRestaurant\AppRestaurantWF\obj\Debug\net8.0-windows\ref\AppRestaurantWF.dll
