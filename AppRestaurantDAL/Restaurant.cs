@@ -7,6 +7,7 @@ namespace AppRestaurantDAL
     public class RestaurantDB
     {
         private readonly string connectionString;
+        private static readonly string TABLE_NAME = "Restaurant";
         public RestaurantDB(string ConnectionString)
         {
             connectionString = ConnectionString;
@@ -47,21 +48,17 @@ namespace AppRestaurantDAL
       * */
         public IEnumerable<Restaurant> GetRestaurantDB(string searchString, string sortOrder)
         {
-            List<Restaurant> restaurantList = new List<Restaurant>();
             SqlConnection con = new SqlConnection(connectionString);
-            string selectSQL = "SELECT * FROM Restaurant";
 
-            string order;
-            //Ternaire visant à asigner le sortorder pour la localisation du restaurant, le ternaire se justifie car il n'y a qu'un sortorder.
-            order = sortOrder == "RestaurantLoc_desc" ? "order by LocRestaurant desc" : "order by LocRestaurant";
+            string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME) +
+                QueryHelper.GetStringFilteredSelectQuery("NomRestaurant", searchString) +
+                QueryHelper.GetPartialOrderedSelectQuery("LocRestaurant", sortOrder == "RestaurantLoc_desc");
 
-            if (!string.IsNullOrEmpty(searchString))
-                selectSQL += "where NomRestaurant like '%" + searchString + "%' ";
-
-            selectSQL = selectSQL + " " + order;
             con.Open();
             SqlCommand cmd = new SqlCommand (selectSQL, con);
             SqlDataReader dr = cmd.ExecuteReader();
+
+            List<Restaurant> restaurantList = new List<Restaurant>();
 
             if (dr != null)
                 while (dr.Read())
@@ -118,20 +115,22 @@ namespace AppRestaurantDAL
         public IEnumerable<String> GetRestaurantLocsDB()
         {
 
-                List<String> restaurantLocList = new List<string>();
-                SqlConnection con = new SqlConnection(connectionString);
-                string selectSQL = "select LocRestaurant From Restaurant";
-                con.Open();
-                SqlCommand cmd = new SqlCommand(selectSQL, con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr != null)
-                {
-                    while (dr.Read())
-                    {
-                        restaurantLocList.Add(dr["LocRestaurant"].ToString());
-                    }
-                }
-                con.Close();
+            SqlConnection con = new SqlConnection(connectionString);
+            string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME, "LocRestaurant");
+            con.Open();
+            SqlCommand cmd = new SqlCommand(selectSQL, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            List<String> restaurantLocList = new List<string>();
+
+            if (dr == null) return restaurantLocList;
+            
+            while (dr.Read())
+            {
+                restaurantLocList.Add(dr["LocRestaurant"].ToString());
+            }
+          
+            con.Close();
             return restaurantLocList;
         }
 
@@ -145,20 +144,22 @@ namespace AppRestaurantDAL
         {
             SqlConnection con = new SqlConnection(connectionString);
 
-            string selectSQL = "SELECT * FROM Restaurant";
+            string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME);
             con.Open();
 
             SqlCommand cmd = new SqlCommand(selectSQL, con);
             SqlDataReader dr = cmd.ExecuteReader();
             Restaurant restaurant = new Restaurant();
 
-            if(dr != null)
-                while(dr.Read())
-                {
-                    restaurant.RestaurantID = Convert.ToInt32(dr["IdRestaurant"]);
-                    restaurant.RestaurantName = dr["NomRestaurant"].ToString();
-                    restaurant.RestaurantLoc = dr["LocRestaurant"].ToString();
-                }
+            if(dr == null) { return restaurant; }
+
+            while(dr.Read())
+            {
+                restaurant.RestaurantID = Convert.ToInt32(dr["IdRestaurant"]);
+                restaurant.RestaurantName = dr["NomRestaurant"].ToString();
+                restaurant.RestaurantLoc = dr["LocRestaurant"].ToString();
+            }
+
             con.Close();
             return restaurant;
         }
@@ -174,21 +175,22 @@ namespace AppRestaurantDAL
             List<Restaurant> restaurantList = new List<Restaurant>(); 
             SqlConnection con = new SqlConnection(connectionString);
 
-            string selectSQL = "SELECT * FROM Restaurant";
+            string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME);
             con.Open();
             SqlCommand cmd = new SqlCommand( selectSQL, con);
             SqlDataReader dr = cmd.ExecuteReader();
 
-            if(dr != null )
-                while(dr.Read())
-                {
-                    Restaurant restaurant = new Restaurant();
-                    restaurant.RestaurantID = Convert.ToInt32(dr["IdRestaurant"]);
-                    restaurant.RestaurantName = dr["NomRestaurant"].ToString();
-                    restaurant.RestaurantLoc = dr["LocRestaurant"].ToString();
+            if(dr == null ) return restaurantList;
 
-                    restaurantList.Add(restaurant);
-                }
+            while(dr.Read())
+            {
+                Restaurant restaurant = new Restaurant();
+                restaurant.RestaurantID = Convert.ToInt32(dr["IdRestaurant"]);
+                restaurant.RestaurantName = dr["NomRestaurant"].ToString();
+                restaurant.RestaurantLoc = dr["LocRestaurant"].ToString();
+
+                restaurantList.Add(restaurant);
+            }
             con.Close();
             return restaurantList;
         }
