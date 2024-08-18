@@ -141,12 +141,11 @@ namespace AppRestaurantDAL
                 connection.Open();
 
                 SqlCommand cmd = new SqlCommand(selectSQL, connection);
+                Restaurant restaurant = new Restaurant();
 
                 // En utilisant USING, la ressource est close à la fin
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
-                    Restaurant restaurant = new Restaurant();
-
                     if (dr == null) { return restaurant; }
 
                     while (dr.Read())
@@ -155,8 +154,14 @@ namespace AppRestaurantDAL
                         restaurant.RestaurantName = dr["NomRestaurant"].ToString();
                         restaurant.RestaurantLoc = dr["LocRestaurant"].ToString();
                     }
-                    return restaurant;
                 }
+
+                ServeurDB serveurDB = new ServeurDB(connectionString);
+                restaurant.serveurs= serveurDB.GetServeursByRestaurant(restaurantId);
+                foreach (Serveur serveur in restaurant.serveurs) 
+                    serveur.employeur = restaurant;
+
+                return restaurant;
             }
         }
 

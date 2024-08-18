@@ -23,5 +23,7 @@ namespace AppRestaurantBOL
         [DisplayName("Email")]
         public string serveurEmail { get; set; }
 
+        [DisplayName("Employeur")]
+        public Restaurant employeur { get; set; }
     }
 }

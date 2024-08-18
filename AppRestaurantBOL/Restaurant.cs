@@ -12,5 +12,7 @@ namespace AppRestaurantBOL
         [DisplayName("Location")]
         public string RestaurantLoc { get; set; }
 
+        [DisplayName("Serveurs")]
+        public List<Serveur> serveurs { get; set; }
     }
 }
