@@ -20,23 +20,16 @@ namespace AppRestaurantDAL
        * */
         public void InsertRestaurantDB(Restaurant restaurant)
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlCommand storedProc = new SqlCommand("USP_InsertRestaurant", connection);
+                SqlCommand storedProc = new SqlCommand("USP_InsertRestaurant", connection);
 
-                    storedProc.CommandType = CommandType.StoredProcedure;
-                    storedProc.Parameters.Add(new SqlParameter("@RestaurantName", restaurant.RestaurantName));
-                    storedProc.Parameters.Add(new SqlParameter("@RestaurantLoc", restaurant.RestaurantLoc));
+                storedProc.CommandType = CommandType.StoredProcedure;
+                storedProc.Parameters.Add(new SqlParameter("@RestaurantName", restaurant.RestaurantName));
+                storedProc.Parameters.Add(new SqlParameter("@RestaurantLoc", restaurant.RestaurantLoc));
 
-                    connection.Open();
-                    storedProc.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                connection.Open();
+                storedProc.ExecuteNonQuery();
             }
         }
 
@@ -49,7 +42,6 @@ namespace AppRestaurantDAL
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
                 string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME) +
                     QueryHelper.GetStringFilteredSelectQuery("NomRestaurant", restaurantName) +
                     QueryHelper.GetPartialOrderedSelectQuery("LocRestaurant", sortOrder == "RestaurantLoc_desc");
@@ -61,7 +53,6 @@ namespace AppRestaurantDAL
                 List<Restaurant> restaurantList = new List<Restaurant>();
 
                 if (dr == null) return restaurantList;
-
 
                 while (dr.Read())
                 {
@@ -107,7 +98,6 @@ namespace AppRestaurantDAL
 
         public IEnumerable<String> FindRestaurantByLocationLocsDB()
         {
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME, "LocRestaurant");
@@ -198,7 +188,6 @@ namespace AppRestaurantDAL
          * */
         public void DeleteProductDB(int restaurantid)
         {
-           
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand("USP_DeleteRestaurant", connection);
@@ -209,8 +198,7 @@ namespace AppRestaurantDAL
                 connection.Open();
                 cmd.ExecuteNonQuery();
                 connection.Close();
-            }
-            
+            }   
         }
     }
 }
