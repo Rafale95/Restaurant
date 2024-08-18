@@ -1,6 +1,8 @@
 ﻿using AppRestaurantBOL;
 using System.Data.SqlClient;
 using System.Data;
+using System.Text;
+using System.Collections.Generic;
 
 namespace AppRestaurantDAL
 {
@@ -34,22 +36,51 @@ namespace AppRestaurantDAL
             }
         }
 
-                /*
+        private string GetFilteredWhereClause(string first, string second)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (!string.IsNullOrEmpty(first)) {
+                sb.Append(" WHERE NomRestaurant LIKE '%" + first + "%'");
+                if (!string.IsNullOrEmpty(second))
+                    sb.Append(" AND LocRestaurant LIKE '%" + second + "%'");
+            }
+            else
+            {
+                sb.Append(" WHERE LocRestaurant LIKE '%" + second + "%'");
+            }
+            return sb.ToString();
+        }
+
+
+        /*
       * ********************************************************
       * Récupération des restaurants avec ou sans filtre
       * ********************************************************
       * */
-        public IEnumerable<Restaurant> FindRestaurantByNameDB(string restaurantName, string sortOrder)
+        public IEnumerable<Restaurant> FindFilteredRestaurant(string restaurantName, string location, string sortOrder)
         {
             // En utilisant USING, la ressource est close à la fin
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME) +
-                    QueryHelper.GetStringFilteredSelectQuery("NomRestaurant", restaurantName) +
-                    QueryHelper.GetPartialOrderedSelectQuery("LocRestaurant", sortOrder == "RestaurantLoc_desc");
-
                 connection.Open();
-                SqlCommand cmd = new SqlCommand(selectSQL, connection);
+                SqlCommand cmd = new SqlCommand(null, connection);
+
+                cmd.CommandText = QueryHelper.GetSelectQuery(TABLE_NAME);
+                if (!string.IsNullOrEmpty(restaurantName))
+                {
+                    cmd.CommandText += " WHERE NomRestaurant LIKE @name";
+                    cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = "%"+restaurantName+"%";
+                    if (!string.IsNullOrEmpty(location))
+                    {
+                        cmd.CommandText += (" AND LocRestaurant = @loc");
+                        cmd.Parameters.Add("@loc", SqlDbType.VarChar).Value = location;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(location))
+                {
+                    cmd.CommandText += (" WHERE LocRestaurant = @loc");
+                    cmd.Parameters.Add("@loc", SqlDbType.VarChar).Value = location;
+                }
 
                 // En utilisant USING, la ressource est close à la fin
                 using (SqlDataReader dr = cmd.ExecuteReader())

@@ -19,13 +19,14 @@ namespace AppRestaurant.Pages.Restaurants
         //Search
         [BindProperty(SupportsGet = true)]
         public string searchString { get; set; }
-        public SelectList restaurantLoc { get; set; }
         [BindProperty(SupportsGet = true)]
+        public string location { get; set; }
+        public SelectList Locations { get; set; }
         public string currentFilter { get; set; }
 
         //Sort
-        public string restaurantNameSort { get; set; }
-        public string restaurantLocSort { get; set; }
+        public string nameSort { get; set; }
+        public string locSort { get; set; }
         public string currentSort { get; set; }
 
         public void OnGet(string searchString, string sortOrder)
@@ -34,14 +35,15 @@ namespace AppRestaurant.Pages.Restaurants
 
             // recherche par catégorie liste deroulante
             IEnumerable<string> restaurantLocQuery = bll.GetRestaurantLocs();
-            restaurantLoc = new SelectList(restaurantLocQuery.ToList());
+            Locations = new SelectList(restaurantLocQuery.ToList());
 
             //trier par ordre asc ou desc la catégorie et le nom du produit
-            restaurantNameSort = String.IsNullOrEmpty(sortOrder) ? "restaurantName_desc" : "";
-            restaurantLocSort = sortOrder == "restaurantLoc_asc" ? "restaurantLoc_desc" : "restaurantLoc_asc";
+            //nameSort = String.IsNullOrEmpty(sortOrder) ? "restaurantName_desc" : "";
+            //locSort = sortOrder == "restaurantLoc_asc" ? "restaurantLoc_desc" : "restaurantLoc_asc";
 
             //searchString recherche
-            restaurants = bll.GetRestaurant(searchString, sortOrder).ToList();
+
+            restaurants = bll.GetAllRestaurants(searchString, location, sortOrder).ToList();
 
 
         }

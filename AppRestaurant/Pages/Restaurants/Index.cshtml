@@ -8,10 +8,10 @@
 
 <form asp-page="./Index" method="get">
     <p> Tri localisations :
-        <select asp-for="restaurantLoc" asp-items="Model.restaurantLoc">
+        <select asp-for="location" asp-items="Model.Locations">
             <option value="">All</option>
         </select>
-        Find by restaurant name: <input type="text" asp-for="searchString" value="@Model.currentFilter" />
+        Find by restaurant name: <input type="text" asp-for="searchString" value="@Model.searchString" />
         <input type="submit" class="btn btn-primary" value="Search" />
         <a asp-page="./Index">Back to full List</a>
     </p>

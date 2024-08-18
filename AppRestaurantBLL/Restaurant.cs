@@ -11,9 +11,9 @@ namespace AppRestaurantBLL
             restaurantDB = new RestaurantDB(connectionString);
         }
 
-        public IEnumerable<Restaurant> GetRestaurant(string searchString, string sortOrder)
+        public IEnumerable<Restaurant> GetAllRestaurants(string SearchString, string Location, string sortOrder)
         {
-            return restaurantDB.FindRestaurantByNameDB(searchString, sortOrder);
+            return restaurantDB.FindFilteredRestaurant(SearchString, Location, sortOrder);
         }
 
         public IEnumerable<String> GetRestaurantLocs()

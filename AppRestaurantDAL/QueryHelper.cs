@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AppRestaurantDAL
+﻿namespace AppRestaurantDAL
 {
     internal class QueryHelper
     {
@@ -15,7 +9,7 @@ namespace AppRestaurantDAL
 
         public static string GetSelectQuery(string DataTableName, string column)
         {
-            return "SELECT " + column + " FROM " + DataTableName;
+            return "SELECT DISTINCT " + column + " FROM " + DataTableName;
         }
 
         public static string GetPartialOrderedSelectQuery(string OrderColumn, bool desc)
