@@ -1,12 +1,9 @@
 ﻿@page
 @model AppRestaurant.Pages.Restaurants.IndexModel
 @{
-    ViewData["Title"] = "Product List";
+    ViewData["Title"] = "Restaurant List";
 }
 
-<p>
-    <a asp-page="Create" class="btn btn-primary">Ajouter un nouveau restaurant</a>
-</p>
 
 
 <form asp-page="./Index" method="get">
@@ -14,7 +11,7 @@
         <select asp-for="restaurantLoc" asp-items="Model.restaurantLoc">
             <option value="">All</option>
         </select>
-        Find by product name: <input type="text" asp-for="searchString" value="@Model.currentFilter" />
+        Find by restaurant name: <input type="text" asp-for="searchString" value="@Model.currentFilter" />
         <input type="submit" class="btn btn-primary" value="Search" />
         <a asp-page="./Index">Back to full List</a>
     </p>
@@ -54,7 +51,7 @@
                 </tr>
             }
         }
-        else  //Si pas de produits affiche un message
+        else  //Si pas de restaurant affiche un message
         {
             <tr>
                 <td colspan="5" class="text-center">
@@ -62,4 +59,9 @@
                 </td>
             </tr>
         }
+
         </tbody>
+        </table>
+    <p>
+        <a asp-page="Create" class="btn btn-primary">Ajouter un nouveau restaurant</a>
+    </p>
