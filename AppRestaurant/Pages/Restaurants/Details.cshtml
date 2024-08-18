@@ -2,3 +2,27 @@
 @model AppRestaurant.Pages.Restaurants.DetailsModel
 @{
 }
+
+<h1>Details</h1>
+<dl class="row">
+
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.restaurant.RestaurantID)
+    </dt>
+    <dt class="col-sm-10">
+        @Html.DisplayFor(Model => Model.restaurant.RestaurantID)
+    </dt>
+
+      <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.restaurant.RestaurantName)
+    </dt>
+    <dt class="col-sm-10">
+        @Html.DisplayFor(Model => Model.restaurant.RestaurantName)
+    </dt>
+     <dt class="col-sm-2">
+        @Html.DisplayNameFor(Model => Model.restaurant.RestaurantLoc)
+    </dt>
+    <dt class="col-sm-10">
+        @Html.DisplayFor(Model => Model.restaurant.RestaurantLoc)
+    </dt>
+</dl>
