@@ -27,7 +27,9 @@ namespace AppRestaurant.Pages.Restaurants
         //Sort
         public string nameSort { get; set; }
         public string locSort { get; set; }
-        public string currentSort { get; set; }
+
+        public string sortOrder { get; set; }
+
 
         public void OnGet(string searchString, string sortOrder)
         {
@@ -38,14 +40,11 @@ namespace AppRestaurant.Pages.Restaurants
             Locations = new SelectList(restaurantLocQuery.ToList());
 
             //trier par ordre asc ou desc la catégorie et le nom du produit
-            //nameSort = String.IsNullOrEmpty(sortOrder) ? "restaurantName_desc" : "";
-            //locSort = sortOrder == "restaurantLoc_asc" ? "restaurantLoc_desc" : "restaurantLoc_asc";
+            nameSort = String.IsNullOrEmpty(sortOrder) ? "nameDesc" : "";
+            locSort = sortOrder == "locAsc" ? "locDesc" : "locAsc";
 
             //searchString recherche
-
             restaurants = bll.GetAllRestaurants(searchString, location, sortOrder).ToList();
-
-
         }
     }
 }

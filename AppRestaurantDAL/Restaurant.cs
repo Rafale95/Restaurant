@@ -82,6 +82,8 @@ namespace AppRestaurantDAL
                     cmd.Parameters.Add("@loc", SqlDbType.VarChar).Value = location;
                 }
 
+                cmd.CommandText += GetRestaurantSortOrder(sortOrder);
+
                 // En utilisant USING, la ressource est close à la fin
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
@@ -102,6 +104,17 @@ namespace AppRestaurantDAL
                     return restaurantList;
                 }
 
+            }
+        }
+
+        private string GetRestaurantSortOrder(string sortOrder)
+        {
+            switch (sortOrder)
+            {
+                case "nameDesc": return " ORDER BY NomRestaurant DESC";
+                case "locDesc": return " ORDER BY NomRestaurant DESC";
+                case "locAsc": return " ORDER BY NomRestaurant ASC";
+                default : return " ORDER BY NomRestaurant";
             }
         }
 
