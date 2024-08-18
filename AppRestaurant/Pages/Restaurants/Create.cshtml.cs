@@ -21,7 +21,7 @@ namespace AppRestaurant.Pages.Restaurants
 
         public ActionResult OnPost()
         {
-            RestaurantBLL objRestaurant = new RestaurantBLL(_configuration.GetConnectionString("DefaultConnection"));
+            RestaurantBLL objRestaurant = new RestaurantBLL(_configuration.GetConnectionString("RestaurantContext"));
             objRestaurant.CreateRestaurant(restaurant);
             return RedirectToPage("./index");
         }

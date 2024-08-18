@@ -30,10 +30,10 @@ namespace AppRestaurant.Pages.Restaurants
 
         public void OnGet(string searchString, string sortOrder)
         {
-            RestaurantBLL objProduct = new RestaurantBLL(_configuration.GetConnectionString("RestaurantContext"));
+            RestaurantBLL bll = new RestaurantBLL(_configuration.GetConnectionString(Program.CONNECTION_STRING));
 
             // recherche par catégorie liste deroulante
-            IEnumerable<string> restaurantLocQuery = objProduct.GetRestaurantLocs();
+            IEnumerable<string> restaurantLocQuery = bll.GetRestaurantLocs();
             restaurantLoc = new SelectList(restaurantLocQuery.ToList());
 
             //trier par ordre asc ou desc la catégorie et le nom du produit
@@ -41,12 +41,9 @@ namespace AppRestaurant.Pages.Restaurants
             restaurantLocSort = sortOrder == "restaurantLoc_asc" ? "restaurantLoc_desc" : "restaurantLoc_asc";
 
             //searchString recherche
-            restaurants = objProduct.GetRestaurant(searchString, sortOrder).ToList();
+            restaurants = bll.GetRestaurant(searchString, sortOrder).ToList();
 
 
-            //Products = objProduct.GetProduct().ToList();
-            int test = 1;
-            // int test = 1; //verification pour la ligne du dessus en break point
         }
     }
 }

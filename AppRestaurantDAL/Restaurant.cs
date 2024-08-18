@@ -137,7 +137,7 @@ namespace AppRestaurantDAL
             // En utilisant USING, la ressource est close à la fin
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME, restaurantId.ToString());
+                string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME) + QueryHelper.GetIntegerFilteredSelectQuery("IdRestaurant", restaurantId);
                 connection.Open();
 
                 SqlCommand cmd = new SqlCommand(selectSQL, connection);
@@ -200,7 +200,7 @@ namespace AppRestaurantDAL
          * Supprime un restaurant
          * ********************************************************
          * */
-        public void DeleteProductDB(int restaurantid)
+        public void DeleteRestaurantDB(int restaurantid)
         {
             // En utilisant USING, la ressource est close à la fin
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -208,7 +208,7 @@ namespace AppRestaurantDAL
                 SqlCommand cmd = new SqlCommand("USP_DeleteRestaurant", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(new SqlParameter("@restaurantId", restaurantid));
+                cmd.Parameters.Add(new SqlParameter("@IdRestaurant", restaurantid));
 
                 connection.Open();
                 cmd.ExecuteNonQuery();

@@ -33,7 +33,7 @@ namespace AppRestaurantBLL
 
         public void DeleteRestaurant(int restaurantID)
         {
-            restaurantDB.DeleteProductDB(restaurantID);
+            restaurantDB.DeleteRestaurantDB(restaurantID);
         }
 
         public Restaurant GetRestaurant(int restaurantId)

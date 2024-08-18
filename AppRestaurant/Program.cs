@@ -2,6 +2,8 @@ namespace AppRestaurant
 {
     public class Program
     {
+        public readonly static string CONNECTION_STRING = "RestaurantContext";
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);

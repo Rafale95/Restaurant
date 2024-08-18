@@ -23,6 +23,11 @@ namespace AppRestaurantDAL
             return " ORDER BY " + OrderColumn + (desc ? " DESC" : "");
         }
 
+        public static string GetIntegerFilteredSelectQuery(string FilterName, int Value)
+        {
+            return " WHERE " + FilterName + " = " + Value;
+        }
+
         public static string GetStringFilteredSelectQuery(string FilterName, string Value)
         {
             if (FilterName == null || Value == null) return "";
