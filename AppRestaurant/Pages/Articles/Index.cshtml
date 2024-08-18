@@ -1,4 +1,77 @@
 ﻿@page
-@model AppRestaurant.Pages.Article.IndexModel
+@model AppRestaurant.Pages.Articles.IndexModel
 @{
+    ViewData["Title"] = "Article List";
 }
+
+
+
+<form asp-page="./Index" method="get">
+    <p>
+        Tri types :
+        <select asp-for="articleType" asp-items="Model.articleType">
+            <option value="">All</option>
+        </select>
+        Find by article name: <input type="text" asp-for="searchString" value="@Model.currentFilter" />
+        <input type="submit" class="btn btn-primary" value="Search" />
+        <a asp-page="./Index">Back to full List</a>
+    </p>
+</form>
+<table class="table table-success table-striped table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page". /Index" asp-route-sortOrder="@Model.articleNameSort">
+                    @Html.DisplayNameFor(model => model.articles[0].RestaurantName)
+                </a>
+            </th>
+            <th>
+                <a asp-page". /Index" asp-route-sortOrder="@Model.articleTypeSort">
+                    @Html.DisplayNameFor(model => model.articles[0].articleType)
+                </a>
+            </th>
+            <th>
+                <a asp-page". /Index" asp-route-sortOrder="@Model.articlePriceSort">
+                    @Html.DisplayNameFor(model => model.articles[0].articlePrice)
+                </a>
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.articles.Any()) //Si il y a des produits
+        {
+            @foreach (var item in Model.articles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArticleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArticleType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArticlePrice)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ArticleID" type="button" class="btn btn-secondary">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ArticleID" type="button" class="btn btn-success">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ArticleID" type="button" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else  //Si pas d'article, affiche un message
+        {
+            <tr>
+                <td colspan="5" class="text-center">
+                    Article introuvable
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<p>
+    <a asp-page="Create" class="btn btn-primary">Ajouter un nouvel article</a>
+</p>

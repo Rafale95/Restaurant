@@ -18,6 +18,6 @@ namespace AppRestaurantBOL
         public string ArticleName { get; set; }
 
         [DisplayName("Prix de l'article")]
-        public string ArticlePrice { get; set; }
+        public float ArticlePrice { get; set; }
     }
 }
