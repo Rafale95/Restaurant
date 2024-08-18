@@ -13,7 +13,7 @@ namespace AppRestaurantBLL
 
         public IEnumerable<Restaurant> GetRestaurant(string searchString, string sortOrder)
         {
-            return restaurantDB.GetRestaurantByNameDB(searchString, sortOrder);
+            return restaurantDB.FindRestaurantByNameDB(searchString, sortOrder);
         }
 
         public IEnumerable<String> GetRestaurantLocs()
@@ -38,12 +38,12 @@ namespace AppRestaurantBLL
 
         public Restaurant GetRestaurant(int restaurantId)
         {
-            return restaurantDB.GetRestaurantDB(restaurantId);
+            return restaurantDB.FindRestaurantByIdDB(restaurantId);
         }
 
         public IEnumerable<Restaurant> GetRestaurantWFapiDB()
         {
-            return restaurantDB.GetRestaurantsWFapiDB();
+            return restaurantDB.FindRestaurantsWFapiDB();
         }
 
     }
