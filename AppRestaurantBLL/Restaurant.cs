@@ -18,7 +18,7 @@ namespace AppRestaurantBLL
 
         public IEnumerable<String> GetRestaurantLocs()
         {
-            return restaurantDB.FindRestaurantByLocationLocsDB();
+            return restaurantDB.FindRestaurantLocationsDB();
         }
 
         public void EditRestaurant(Restaurant restaurant)

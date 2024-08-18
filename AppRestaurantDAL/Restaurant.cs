@@ -26,7 +26,7 @@ namespace AppRestaurantDAL
                 SqlCommand storedProc = new SqlCommand("USP_InsertRestaurant", connection);
 
                 storedProc.CommandType = CommandType.StoredProcedure;
-                storedProc.Parameters.Add(new SqlParameter("@RestaurantName", restaurant.RestaurantName));
+                storedProc.Parameters.Add(new SqlParameter("@NomRestaurant", restaurant.RestaurantName));
                 storedProc.Parameters.Add(new SqlParameter("@RestaurantLoc", restaurant.RestaurantLoc));
 
                 connection.Open();
