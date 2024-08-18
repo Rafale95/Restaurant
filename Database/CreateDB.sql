@@ -181,8 +181,8 @@ GO
 
 CREATE PROCEDURE USP_UpdateRestaurant
 	@IdRestaurant INT,
-	@NomRestaurant VARCHAR, 
-	@RestaurantLoc VARCHAR
+	@NomRestaurant VARCHAR(50), 
+	@RestaurantLoc VARCHAR(255)
 AS
 BEGIN
 	UPDATE Restaurant SET NomRestaurant=@NomRestaurant, LocRestaurant=@RestaurantLoc WHERE IdRestaurant=@IdRestaurant

@@ -2,3 +2,33 @@
 @model AppRestaurant.Pages.Restaurants.EditModel
 @{
 }
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="restaurant.RestaurantID" />
+            <div class="form-group">
+                <label asp-for="restaurant.RestaurantName" class="control-label"></label>
+                <input asp-for="restaurant.RestaurantName" class="form-control" />
+                <span asp-validation-for="restaurant.RestaurantName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="restaurant.RestaurantLoc" class="control-label"></label>
+                <input asp-for="restaurant.RestaurantLoc" class="form-control" />
+                <span asp-validation-for="restaurant.RestaurantLoc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -87,8 +87,8 @@ namespace AppRestaurantDAL
             {
                 SqlCommand cmd = new SqlCommand("USP_UpdateRestaurant", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@RestaurantId", restaurant.RestaurantID));
-                cmd.Parameters.Add(new SqlParameter("@RestaurantName", restaurant.RestaurantName));
+                cmd.Parameters.Add(new SqlParameter("@IdRestaurant", restaurant.RestaurantID));
+                cmd.Parameters.Add(new SqlParameter("@NomRestaurant", restaurant.RestaurantName));
                 cmd.Parameters.Add(new SqlParameter("@RestaurantLoc", restaurant.RestaurantLoc));
                 connection.Open();
                 cmd.ExecuteNonQuery();
