@@ -15,12 +15,12 @@ namespace AppRestaurantBLL
 
         public void CreateServeur(Serveur serveur)
         {
-            serveurDB.CreateServeurDB(serveur);
+            serveurDB.InsertServeurDB(serveur);
         }
 
         public void EditServeur(Serveur serveur)
         {
-            serveurDB.EditServeurDB(serveur);
+            serveurDB.UpdateServeurDB(serveur);
         }
 
         public void DeleteServeur(Serveur serveur)

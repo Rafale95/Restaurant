@@ -12,7 +12,7 @@ namespace AppRestaurantDAL
             connectionString = ConnectionString;
         }
 
-        public void CreateServeurDB(Serveur serveur)
+        public void InsertServeurDB(Serveur serveur)
         {
             throw new NotImplementedException();
         }
@@ -22,12 +22,12 @@ namespace AppRestaurantDAL
             throw new NotImplementedException();
         }
 
-        public void EditServeurDB(Serveur serveur)
+        public void UpdateServeurDB(Serveur serveur)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Serveur> GetServeurs()
+        public IEnumerable<Serveur> GetAllServeur()
         {
             throw new NotImplementedException();
         }

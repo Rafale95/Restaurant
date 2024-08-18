@@ -14,12 +14,12 @@ namespace AppRestaurantBLL
 
         public void CreateTable(Table table)
         {
-            tableDB.CreateTableDB(table);
+            tableDB.InsertTableDB(table);
         }
 
         public void EditTable(Table table)
         {
-            tableDB.EditTableDB(table);
+            tableDB.UpdateTableDB(table);
         }
 
         public void DeleteTable(Table table)

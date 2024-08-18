@@ -13,22 +13,22 @@ namespace AppRestaurantBLL
 
         public IEnumerable<Restaurant> GetRestaurant(string searchString, string sortOrder)
         {
-            return restaurantDB.GetRestaurantDB(searchString, sortOrder);
+            return restaurantDB.GetRestaurantByNameDB(searchString, sortOrder);
         }
 
         public IEnumerable<String> GetRestaurantLocs()
         {
-            return restaurantDB.GetRestaurantLocsDB();
+            return restaurantDB.FindRestaurantByLocationLocsDB();
         }
 
         public void EditRestaurant(Restaurant restaurant)
         {
-            restaurantDB.EditRestaurantDB(restaurant);
+            restaurantDB.UpdateRestaurantDB(restaurant);
         }
 
         public void CreateRestaurant(Restaurant restaurant)
         {
-            restaurantDB.CreateRestaurantDB(restaurant);
+            restaurantDB.InsertRestaurantDB(restaurant);
         }
 
         public void DeleteRestaurant(int restaurantID)

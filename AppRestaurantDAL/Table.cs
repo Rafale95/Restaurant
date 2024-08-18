@@ -12,7 +12,7 @@ namespace AppRestaurantDAL
             connectionString = ConnectionString;
         }
 
-        public void CreateTableDB(Table table)
+        public void InsertTableDB(Table table)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +22,7 @@ namespace AppRestaurantDAL
             throw new NotImplementedException();
         }
 
-        public void EditTableDB(Table table)
+        public void UpdateTableDB(Table table)
         {
             throw new NotImplementedException();
         }
