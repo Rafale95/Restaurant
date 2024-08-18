@@ -14,5 +14,11 @@ namespace AppRestaurantBOL
 
         [DisplayName("Serveurs")]
         public List<Serveur> serveurs { get; set; }
+
+        [DisplayName("Tables")]
+        public List<Table> tables { get; set; }
+
+        [DisplayName("Commandes")]
+        public List<Commande> commandes { get; set; }
     }
 }
