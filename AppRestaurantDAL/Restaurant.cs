@@ -28,29 +28,13 @@ namespace AppRestaurantDAL
                 SqlCommand storedProc = new SqlCommand("USP_InsertRestaurant", connection);
 
                 storedProc.CommandType = CommandType.StoredProcedure;
-                storedProc.Parameters.Add(new SqlParameter("@NomRestaurant", restaurant.RestaurantName));
-                storedProc.Parameters.Add(new SqlParameter("@RestaurantLoc", restaurant.RestaurantLoc));
+                storedProc.Parameters.Add(new SqlParameter("@NomRestaurant", restaurant.Nom));
+                storedProc.Parameters.Add(new SqlParameter("@RestaurantLoc", restaurant.Localisation));
 
                 connection.Open();
                 storedProc.ExecuteNonQuery();
             }
         }
-
-        private string GetFilteredWhereClause(string first, string second)
-        {
-            StringBuilder sb = new StringBuilder();
-            if (!string.IsNullOrEmpty(first)) {
-                sb.Append(" WHERE NomRestaurant LIKE '%" + first + "%'");
-                if (!string.IsNullOrEmpty(second))
-                    sb.Append(" AND LocRestaurant LIKE '%" + second + "%'");
-            }
-            else
-            {
-                sb.Append(" WHERE LocRestaurant LIKE '%" + second + "%'");
-            }
-            return sb.ToString();
-        }
-
 
         /*
       * ********************************************************
@@ -94,9 +78,9 @@ namespace AppRestaurantDAL
                     {
                         Restaurant restaurant = new Restaurant();
 
-                        restaurant.RestaurantID = Convert.ToInt32(dr["IdRestaurant"]);
-                        restaurant.RestaurantName = dr["NomRestaurant"].ToString();
-                        restaurant.RestaurantLoc = dr["LocRestaurant"].ToString();
+                        restaurant.Id = Convert.ToInt32(dr["IdRestaurant"]);
+                        restaurant.Nom = dr["NomRestaurant"].ToString();
+                        restaurant.Localisation = dr["LocRestaurant"].ToString();
 
                         restaurantList.Add(restaurant);
                     }
@@ -131,9 +115,9 @@ namespace AppRestaurantDAL
             {
                 SqlCommand cmd = new SqlCommand("USP_UpdateRestaurant", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@IdRestaurant", restaurant.RestaurantID));
-                cmd.Parameters.Add(new SqlParameter("@NomRestaurant", restaurant.RestaurantName));
-                cmd.Parameters.Add(new SqlParameter("@RestaurantLoc", restaurant.RestaurantLoc));
+                cmd.Parameters.Add(new SqlParameter("@IdRestaurant", restaurant.Id));
+                cmd.Parameters.Add(new SqlParameter("@NomRestaurant", restaurant.Nom));
+                cmd.Parameters.Add(new SqlParameter("@RestaurantLoc", restaurant.Localisation));
                 connection.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -194,15 +178,15 @@ namespace AppRestaurantDAL
 
                     while (dr.Read())
                     {
-                        restaurant.RestaurantID = Convert.ToInt32(dr["IdRestaurant"]);
-                        restaurant.RestaurantName = dr["NomRestaurant"].ToString();
-                        restaurant.RestaurantLoc = dr["LocRestaurant"].ToString();
+                        restaurant.Id = Convert.ToInt32(dr["IdRestaurant"]);
+                        restaurant.Nom = dr["NomRestaurant"].ToString();
+                        restaurant.Localisation = dr["LocRestaurant"].ToString();
                     }
                 }
 
                 ServeurDB serveurDB = new ServeurDB(connectionString);
-                restaurant.serveurs= serveurDB.GetServeursByRestaurant(restaurantId);
-                foreach (Serveur serveur in restaurant.serveurs) 
+                restaurant.Serveurs= serveurDB.GetServeursByRestaurant(restaurantId);
+                foreach (Serveur serveur in restaurant.Serveurs) 
                     serveur.employeur = restaurant;
 
                 return restaurant;
@@ -233,9 +217,9 @@ namespace AppRestaurantDAL
                     while (dr.Read())
                     {
                         Restaurant restaurant = new Restaurant();
-                        restaurant.RestaurantID = Convert.ToInt32(dr["IdRestaurant"]);
-                        restaurant.RestaurantName = dr["NomRestaurant"].ToString();
-                        restaurant.RestaurantLoc = dr["LocRestaurant"].ToString();
+                        restaurant.Id = Convert.ToInt32(dr["IdRestaurant"]);
+                        restaurant.Nom = dr["NomRestaurant"].ToString();
+                        restaurant.Localisation = dr["LocRestaurant"].ToString();
 
                         restaurantList.Add(restaurant);
                     }

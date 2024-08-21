@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace AppRestaurantBOL
 {
     public class Article
     {
-        public int ArticleID { get; set; }
+        public int Id { get; set; }
 
         [DisplayName("Type l'article")]
-        public string ArticleType { get; set; }
+        public string Category { get; set; }
 
         [DisplayName("Nom de l'article")]
-        public string ArticleName { get; set; }
+        public string Name { get; set; }
 
         [DisplayName("Prix de l'article")]
-        public float ArticlePrice { get; set; }
+        public float Price { get; set; }
     }
 }

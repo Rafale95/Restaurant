@@ -1,7 +1,6 @@
 ﻿using AppRestaurantBOL;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace AppRestaurantDAL
 {
@@ -15,7 +14,7 @@ namespace AppRestaurantDAL
             this.connectionString = connectionString;
         }
 
-        public IEnumerable<Article> InsertArticleDB(Article article)
+        public void InsertArticleDB(Article article)
         {
             // En utilisant USING, la ressource est close à la fin
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -23,29 +22,13 @@ namespace AppRestaurantDAL
                 SqlCommand storedProc = new SqlCommand("USP_InsertArticle", connection);
 
                 storedProc.CommandType = CommandType.StoredProcedure;
-                storedProc.Parameters.Add(new SqlParameter("@NomArticle", article.ArticleName));
-                storedProc.Parameters.Add(new SqlParameter("@TypeArticle", article.ArticleType));
-                storedProc.Parameters.Add(new SqlParameter("@PrixArticle", article.ArticlePrice));
+                storedProc.Parameters.Add(new SqlParameter("@Nom", article.Name));
+                storedProc.Parameters.Add(new SqlParameter("@Categorie", article.Category));
+                storedProc.Parameters.Add(new SqlParameter("@Prix", article.Price));
 
                 connection.Open();
                 storedProc.ExecuteNonQuery();
             }
-        }
-
-        private string GetFilteredWhereClause(string first, string second)
-        {
-            StringBuilder sb = new StringBuilder();
-            if (!string.IsNullOrEmpty(first))
-            {
-                sb.Append(" WHERE NomArticle LIKE '%" + first + "%'");
-                if (!string.IsNullOrEmpty(second))
-                    sb.Append(" AND TypeArticle LIKE '%" + second + "%'");
-            }
-            else
-            {
-                sb.Append(" WHERE TypeArticle LIKE '%" + second + "%'");
-            }
-            return sb.ToString();
         }
 
         /*
@@ -53,7 +36,7 @@ namespace AppRestaurantDAL
       * Récupération des articles avec ou sans filtre
       * ********************************************************
       * */
-        public IEnumerable<Article> FindFilteredRestaurant(string articletName, string articleType, float articlePrice, string sortOrder)
+        public IEnumerable<Article> GetAllArticles()
         {
             // En utilisant USING, la ressource est close à la fin
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -62,21 +45,6 @@ namespace AppRestaurantDAL
                 SqlCommand cmd = new SqlCommand(null, connection);
 
                 cmd.CommandText = QueryHelper.GetSelectQuery(TABLE_NAME);
-                if (!string.IsNullOrEmpty(articletName))
-                {
-                    cmd.CommandText += " WHERE NomArticle LIKE @name";
-                    cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = "%" + articletName + "%";
-                    if (!string.IsNullOrEmpty(articleType))
-                    {
-                        cmd.CommandText += (" AND TypeArticle = @type");
-                        cmd.Parameters.Add("@loc", SqlDbType.VarChar).Value = location;
-                    }
-                }
-                else if (!string.IsNullOrEmpty(articleType))
-                {
-                    cmd.CommandText += (" WHERE TypeArticle = @type");
-                    cmd.Parameters.Add("@loc", SqlDbType.VarChar).Value = location;
-                }
 
                 // En utilisant USING, la ressource est close à la fin
                 using (SqlDataReader dr = cmd.ExecuteReader())
@@ -88,10 +56,10 @@ namespace AppRestaurantDAL
                     {
                         Article article= new Article();
 
-                        article.ArticleID = Convert.ToInt32(dr["IdArticle"]);
-                        article.ArticleName = dr["NomArticle"].ToString();
-                        article.ArticleType = dr["TypeArticle"].ToString();
-                        article.ArticlePrice = (float)Convert.ToDouble(dr["PrixArticle"]);
+                        article.Id = Convert.ToInt32(dr["IdArticle"]);
+                        article.Name = dr["NomArticle"].ToString();
+                        article.Category = dr["TypeArticle"].ToString();
+                        article.Price = (float)Convert.ToDouble(dr["PrixArticle"]);
 
                         articleList.Add(article);
                     }
@@ -102,5 +70,9 @@ namespace AppRestaurantDAL
             }
         }
 
+        public IEnumerable<string> GetArticleType()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

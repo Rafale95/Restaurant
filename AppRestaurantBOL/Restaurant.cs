@@ -4,21 +4,21 @@ namespace AppRestaurantBOL
 {
     public class Restaurant
     {
-        public int RestaurantID { get; set; }
+        public int Id { get; set; }
 
         [DisplayName("Restaurant")]
-        public string RestaurantName { get; set; }
+        public string Nom { get; set; }
 
         [DisplayName("Location")]
-        public string RestaurantLoc { get; set; }
+        public string Localisation { get; set; }
 
         [DisplayName("Serveurs")]
-        public List<Serveur> serveurs { get; set; }
+        public List<Serveur> Serveurs { get; set; }
 
         [DisplayName("Tables")]
-        public List<Table> tables { get; set; }
+        public List<Table> Tables { get; set; }
 
         [DisplayName("Commandes")]
-        public List<Commande> commandes { get; set; }
+        public List<Commande> Commandes { get; set; }
     }
 }

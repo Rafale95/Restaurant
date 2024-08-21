@@ -9,7 +9,7 @@
 <form asp-page="./Index" method="get">
     <p>
         Tri types :
-        <select asp-for="articleType" asp-items="Model.articleType">
+        <select asp-for="Categories" asp-items="Model.Categories">
             <option value="">All</option>
         </select>
         Find by article name: <input type="text" asp-for="searchString" value="@Model.currentFilter" />
@@ -22,17 +22,17 @@
         <tr>
             <th>
                 <a asp-page". /Index" asp-route-sortOrder="@Model.articleNameSort">
-                    @Html.DisplayNameFor(model => model.articles[0].RestaurantName)
+                    @Html.DisplayNameFor(model => model.articles[0].Name)
                 </a>
             </th>
             <th>
                 <a asp-page". /Index" asp-route-sortOrder="@Model.articleTypeSort">
-                    @Html.DisplayNameFor(model => model.articles[0].articleType)
+                    @Html.DisplayNameFor(model => model.articles[0].Category)
                 </a>
             </th>
             <th>
                 <a asp-page". /Index" asp-route-sortOrder="@Model.articlePriceSort">
-                    @Html.DisplayNameFor(model => model.articles[0].articlePrice)
+                    @Html.DisplayNameFor(model => model.articles[0].Price)
                 </a>
             </th>
             <th>Actions</th>
@@ -45,18 +45,18 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ArticleName)
+                        @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ArticleType)
+                        @Html.DisplayFor(modelItem => item.Category)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ArticlePrice)
+                        @Html.DisplayFor(modelItem => item.Price)
                     </td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.ArticleID" type="button" class="btn btn-secondary">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.ArticleID" type="button" class="btn btn-success">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.ArticleID" type="button" class="btn btn-danger">Delete</a>
+                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-secondary">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-success">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }

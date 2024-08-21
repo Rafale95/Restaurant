@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using AppRestaurantBOL;
 using AppRestaurantBLL;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using AppRestaurantBOL;
 
 namespace AppRestaurant.Pages.Articles
 {
@@ -18,7 +18,7 @@ namespace AppRestaurant.Pages.Articles
         //Search
         [BindProperty(SupportsGet = true)]
         public string searchString { get; set; }
-        public SelectList articleType { get; set; }
+        public SelectList Categories { get; set; }
         [BindProperty(SupportsGet = true)]
         public string currentFilter { get; set; }
 
@@ -33,16 +33,15 @@ namespace AppRestaurant.Pages.Articles
             ArticleBLL bll = new ArticleBLL(_configuration.GetConnectionString(Program.CONNECTION_STRING));
 
             // recherche par catégorie liste deroulante
-            IEnumerable<string> articleTypeQuery = bll.GetArticleTypes();
-            articleType = new SelectList(articleTypeQuery.ToList());
+            //Categories = new SelectList(bll.GetArticleTypes().ToList());
 
-            //trier par ordre asc ou desc la catégorie et le nom du produit
-            articleNameSort = String.IsNullOrEmpty(sortOrder) ? "articleName_desc" : "";
-            articleTypeSort = sortOrder == "articleType_asc" ? "articleType_desc" : "articleType_asc";
-            articlePriceSort = sortOrder == "articlePrice_asc" ? "articlePrice_desc" : "articlePrice_asc";
+            ////trier par ordre asc ou desc la catégorie et le nom du produit
+            //articleNameSort = String.IsNullOrEmpty(sortOrder) ? "articleName_desc" : "";
+            //articleTypeSort = sortOrder == "articleType_asc" ? "articleType_desc" : "articleType_asc";
+            //articlePriceSort = sortOrder == "articlePrice_asc" ? "articlePrice_desc" : "articlePrice_asc";
 
             //searchString recherche
-            articles = bll.GetArticle(searchString, sortOrder).ToList();
+            articles = bll.GetAllArticles().ToList();
 
 
         }

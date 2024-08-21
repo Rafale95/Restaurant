@@ -21,12 +21,12 @@
     <tr>
         <th>
             <a asp-page". /Index" asp-route-sortOrder="@Model.nameSort">
-                @Html.DisplayNameFor(model => model.restaurants[0].RestaurantName)
+                @Html.DisplayNameFor(model => model.restaurants[0].Nom)
             </a>
         </th>
         <th>
             <a asp-page". /Index" asp-route-sortOrder="@Model.locSort">
-                @Html.DisplayNameFor(model => model.restaurants[0].RestaurantLoc)
+                @Html.DisplayNameFor(model => model.restaurants[0].Localisation)
             </a>
         </th>
         <th>Actions</th>
@@ -39,15 +39,15 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.RestaurantName)
+                        @Html.DisplayFor(modelItem => item.Nom)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.RestaurantLoc)
+                        @Html.DisplayFor(modelItem => item.Localisation)
                     </td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.RestaurantID" type="button" class="btn btn-secondary">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.RestaurantID" type="button" class="btn btn-success">Details</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.RestaurantID" type="button" class="btn btn-danger">Delete</a>
+                        <a asp-page="./Edit" asp-route-id="@item.Id" type="button" class="btn btn-secondary">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id" type="button" class="btn btn-success">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id" type="button" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }

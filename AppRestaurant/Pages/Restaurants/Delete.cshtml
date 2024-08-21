@@ -10,28 +10,28 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.restaurant.RestaurantID)
+            @Html.DisplayNameFor(model => model.restaurant.Id)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.restaurant.RestaurantID)
+            @Html.DisplayFor(model => model.restaurant.Id)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.restaurant.RestaurantName)
+            @Html.DisplayNameFor(model => model.restaurant.Nom)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.restaurant.RestaurantName)
+            @Html.DisplayFor(model => model.restaurant.Nom)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.restaurant.RestaurantLoc)
+            @Html.DisplayNameFor(model => model.restaurant.Localisation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.restaurant.RestaurantLoc)
+            @Html.DisplayFor(model => model.restaurant.Localisation)
         </dd>
 
     </dl>
 
     <form method="post">
-        <input type="hidden" asp-for="restaurant.RestaurantID" />
+        <input type="hidden" asp-for="restaurant.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-page="./Index">Back to List</a>
     </form>

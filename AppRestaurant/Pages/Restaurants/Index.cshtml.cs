@@ -36,8 +36,7 @@ namespace AppRestaurant.Pages.Restaurants
             RestaurantBLL bll = new RestaurantBLL(_configuration.GetConnectionString(Program.CONNECTION_STRING));
 
             // recherche par catégorie liste deroulante
-            IEnumerable<string> restaurantLocQuery = bll.GetRestaurantLocs();
-            Locations = new SelectList(restaurantLocQuery.ToList());
+            Locations = new SelectList(bll.GetRestaurantLocations().ToList());
 
             //trier par ordre asc ou desc la catégorie et le nom du produit
             nameSort = String.IsNullOrEmpty(sortOrder) ? "nameDesc" : "";

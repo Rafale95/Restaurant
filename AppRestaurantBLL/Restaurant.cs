@@ -16,7 +16,7 @@ namespace AppRestaurantBLL
             return restaurantDB.FindFilteredRestaurant(SearchString, Location, sortOrder);
         }
 
-        public IEnumerable<String> GetRestaurantLocs()
+        public IEnumerable<String> GetRestaurantLocations()
         {
             return restaurantDB.FindRestaurantLocationsDB();
         }

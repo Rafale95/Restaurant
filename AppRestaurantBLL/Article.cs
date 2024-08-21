@@ -12,10 +12,19 @@ namespace AppRestaurantBLL
             articleDB = new ArticleDB(connectionString);
         }
 
-        public IEnumerable<Article> GetArticle(string searchString, string sortOrder)
+        public void CreateArticle(Article article)
         {
-            return articleDB.FindArticleByNameDB(searchString, sortOrder);
+            articleDB.InsertArticleDB(article);
         }
 
+        public IEnumerable<Article> GetAllArticles()
+        {
+            return articleDB.GetAllArticles();
+        }
+
+        public IEnumerable<string> GetArticleTypes()
+        {
+            return articleDB.GetArticleType();
+        }
     }
 }
