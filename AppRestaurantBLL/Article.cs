@@ -24,7 +24,7 @@ namespace AppRestaurantBLL
 
         public IEnumerable<string> GetArticleTypes()
         {
-            return articleDB.GetArticleType();
+            return articleDB.FindArticleCategoryDB();
         }
     }
 }

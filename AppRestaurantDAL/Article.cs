@@ -70,9 +70,28 @@ namespace AppRestaurantDAL
             }
         }
 
-        public IEnumerable<string> GetArticleType()
+        public IEnumerable<string> FindArticleCategoryDB()
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string selectSQL = QueryHelper.GetSelectQuery(TABLE_NAME, "TypeArticle");
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(selectSQL, connection);
+
+                // En utilisant USING, la ressource est close à la fin
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    List<String> restaurantLocations = new List<string>();
+                    if (dr == null) return restaurantLocations;
+
+                    while (dr.Read())
+                    {
+                        restaurantLocations.Add(dr["TypeArticle"].ToString());
+                    }
+
+                    return restaurantLocations;
+                }
+            }
         }
     }
 }

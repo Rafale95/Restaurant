@@ -18,6 +18,7 @@ namespace AppRestaurant.Pages.Articles
         //Search
         [BindProperty(SupportsGet = true)]
         public string searchString { get; set; }
+        public string category;
         public SelectList Categories { get; set; }
         [BindProperty(SupportsGet = true)]
         public string currentFilter { get; set; }
@@ -33,7 +34,7 @@ namespace AppRestaurant.Pages.Articles
             ArticleBLL bll = new ArticleBLL(_configuration.GetConnectionString(Program.CONNECTION_STRING));
 
             // recherche par catégorie liste deroulante
-            //Categories = new SelectList(bll.GetArticleTypes().ToList());
+            Categories = new SelectList(bll.GetArticleTypes().ToList());
 
             ////trier par ordre asc ou desc la catégorie et le nom du produit
             //articleNameSort = String.IsNullOrEmpty(sortOrder) ? "articleName_desc" : "";

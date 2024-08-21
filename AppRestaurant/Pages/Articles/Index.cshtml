@@ -9,7 +9,7 @@
 <form asp-page="./Index" method="get">
     <p>
         Tri types :
-        <select asp-for="Categories" asp-items="Model.Categories">
+        <select asp-for="category" asp-items="Model.Categories">
             <option value="">All</option>
         </select>
         Find by article name: <input type="text" asp-for="searchString" value="@Model.currentFilter" />
